@@ -6,6 +6,7 @@ function isMoment (value) {
 
 var api = {
   moment: null,
+  momentParser: null,
   isMoment: isMoment
 };
 

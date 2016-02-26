@@ -4,10 +4,10 @@ var momentum = require('./momentum');
 
 function raw (date, format) {
   if (typeof date === 'string') {
-    return momentum.moment(date, format);
+    return momentum.momentParser(date, format);
   }
   if (Object.prototype.toString.call(date) === '[object Date]') {
-    return momentum.moment(date);
+    return momentum.momentParser(date);
   }
   if (momentum.isMoment(date)) {
     return date.clone();

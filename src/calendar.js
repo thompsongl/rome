@@ -61,7 +61,7 @@ function calendar (calendarOptions) {
 
     removeChildren(container);
     rendered = false;
-    ref = o.initialValue ? o.initialValue : momentum.moment();
+    ref = o.initialValue ? o.initialValue : momentum.momentParser();
     refCal = ref.clone();
 
     api.back = subtractMonth;
@@ -207,7 +207,7 @@ function calendar (calendarOptions) {
     crossvent.add(time, 'click', toggleTimeList);
     timelist = dom({ className: o.styles.timeList, parent: timewrapper });
     crossvent.add(timelist, 'click', pickTime);
-    var next = momentum.moment('00:00:00', 'HH:mm:ss');
+    var next = momentum.momentParser('00:00:00', 'HH:mm:ss');
     var latest = next.clone().add(1, 'days');
     while (next.isBefore(latest)) {
       dom({ className: o.styles.timeOption, parent: timelist, text: next.format(o.timeFormat) });
@@ -236,7 +236,7 @@ function calendar (calendarOptions) {
     var i;
     for (i = 0; i < length; i++) {
       item = times[i];
-      time = momentum.moment(text(item), o.timeFormat);
+      time = momentum.momentParser(text(item), o.timeFormat);
       date = setTime(ref.clone(), time);
       item.style.display = isInRange(date, false, o.timeValidator) ? 'block' : 'none';
     }
@@ -639,7 +639,7 @@ function calendar (calendarOptions) {
     if (!classes.contains(target, o.styles.timeOption)) {
       return;
     }
-    var value = momentum.moment(text(target), o.timeFormat);
+    var value = momentum.momentParser(text(target), o.timeFormat);
     setTime(ref, value);
     refCal = ref.clone();
     emitValues();
