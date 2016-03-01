@@ -3,10 +3,9 @@
 var momentum = require('./momentum');
 
 function use (moment, utc) {
+  var useUtc = typeof utc !== 'undefined' && utc === 'utc';
   this.moment = momentum.moment = moment;
-  if(utc === 'utc'){
-    this.momentParser = momentum.momentParser = moment.utc;
-  }
+  this.momentParser = momentum.momentParser = useUtc ? moment.utc : moment;
 }
 
 module.exports = use;
